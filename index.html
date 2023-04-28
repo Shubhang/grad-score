@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Self-Assessment Rubric</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .container {
+      width: 600px;
+      margin: 0 auto;
+    }
+    .category {
+      margin-bottom: 20px;
+    }
+    .category h3 {
+      margin-bottom: 10px;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .grade {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Self-Assessment Rubric</h1>
+    <form id="assessmentForm">
+      <!-- Employment Category -->
+      <div class="category">
+        <h3>1. Employment</h3>
+        <label><input type="radio" name="employment" value="10"> Employed at a top-tier tech company with a competitive TC package (10 points)</label><br>
+        <label><input type="radio" name="employment" value="8"> Employed at a mid-tier tech company with a satisfactory TC package (8 points)</label><br>
+        <label><input type="radio" name="employment" value="6"> Employed at a startup or smaller company with a moderate TC package (6 points)</label><br>
+        <label><input type="radio" name="employment" value="4"> Actively seeking employment opportunities (4 points)</label><br>
+        <label><input type="radio" name="employment" value="0"> Currently unemployed and not actively seeking employment (0 points)</label><br>
+      </div>
+      <!-- Relationships Category -->
+      <div class="category">
+        <h3>2. Relationships</h3>
+        <label><input type="radio" name="relationships" value="10"> Engaged to be married (10 points)</label><br>
+        <label><input type="radio" name="relationships" value="8"> In a committed and exclusive romantic relationship (8 points)</label><br>
+        <label><input type="radio" name="relationships" value="6"> Have had multiple romantic relationships (6 points)</label><br>
+        <label><input type="radio" name="relationships" value="4"> Have had at least one romantic relationship (4 points)</label><br>
+        <label><input type="radio" name="relationships" value="2"> Have not had any romantic relationships but have been actively dating (2 points)</label><br>
+        <label><input type="radio" name="relationships" value="0"> Have not had any romantic relationships and have not been actively dating (0 points)</label><br>
+      </div>
+      <!-- Academics Category -->
+      <div class="category">
+        <h3>3. Academics</h3>
+        <label><input type="radio" name="academics" value="10"> Published research in a reputable journal or conference (10 points)</label><br>
+        <label><input type="radio" name="academics" value="8"> Achieved a high GPA (above 3.5) and eligible for pursuing a master's degree (8 points)</label><br>
+        <label><input type="radio" name="academics" value="6"> Achieved a satisfactory GPA (between 3.0 and 3.5) and considering further studies (6 points)</label><br>
+        <label><input type="radio" name="academics" value="4"> Achieved a moderate GPA (below 3.0) and focusing on practical skills and experience (4 points)</label><br>
+        <label><input type="radio" name="academics" value="2"> Faced academic challenges but have taken steps to improve performance (2 points)</label><br>
+        <label><input type="radio" name="academics" value="0"> Faced significant academic challenges and have not taken steps to improve (0 points)</label><br>
+      </div>
+      <!-- Social Life Category -->
+      <div class="category">
+        <h3>4. Social Life</h3> <label><input type="radio" name="social_life" value="10"> Have a large and diverse circle of friends and actively participate in social events (10 points)</label><br>
+        <label><input type="radio" name="social_life" value="8"> Have a close-knit group of friends and engage in regular social activities (8 points)</label><br>
+        <label><input type="radio" name="social_life" value="6"> Have a few friends and occasionally participate in social events (6 points)</label><br>
+        <label><input type="radio" name="social_life" value="4"> Have limited social interactions but have made efforts to expand social circle (4 points)</label><br>
+        <label><input type="radio" name="social_life" value="2"> Have faced challenges in building a social circle and seeking ways to improve social skills (2 points)</label><br>
+        <label><input type="radio" name="social_life" value="0"> Have faced significant challenges in building a social circle and have not taken steps to improve (0 points)</label><br>
+        
+          </div>
+          <button type="button" onclick="calculateGrade()">Calculate Grade</button>
+        </form>
+        
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateGrade() {
+      var totalPoints = 0;
+      var form = document.getElementById('assessmentForm');
+      // Sum the selected radio button values
+      for (var i = 0; i < form.elements.length; i++) {
+        if (form.elements[i].type === 'radio' && form.elements[i].checked) {
+          totalPoints += parseInt(form.elements[i].value);
+        }
+      }
+      // Calculate final grade
+      var finalGrade = (totalPoints / 40) * 10;
+      // Display result
+      document.getElementById('result').innerHTML = 'Your final grade is: <span class="grade">' + finalGrade.toFixed(1) + '/10</span>';
+    }
+  </script>
+</body>
+</html>
